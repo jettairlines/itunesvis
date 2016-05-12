@@ -21,10 +21,10 @@ Sorting your iTunes Play List based on how much you skip.
 - Python XML reader & JSON dump
 - JS & jQuery frontend
 - Sorttable.js
--
+
 **Rankings are calculated by** Play : Skips input over time since you've added this song to your library
 
-## Story
+## Background
 ### Do I have a good playlist?
 ### Motivation
 tl;dr: relationship between "Loved" marl & listening habits (plays + skips)
