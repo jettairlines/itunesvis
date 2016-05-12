@@ -33,7 +33,7 @@
     $('#form').on('submit',function(){
        s = $("input[name='s']").val();
         $('table').html('');
-        getData(2-s,s);
+        getData(3-s,(1+s)/(3-s));
         return false;
     });
     
@@ -47,7 +47,7 @@
         song['Skip Count'] = (song['Skip Count'] == -1? 0 : song['Skip Count']);
         song['Play Count'] = (song['Play Count'] == -1? 0 : song['Play Count']);
         song['Loved'] = (song['Loved'] == -1? '' : '&#10084;');
-        return "<tr><td>"+i+"</td><td>"+song['Name']+"</td><td>"+song['Artist']+"</td><td id='right'>"+song['Year']+"</td><td id='right'>"+song['Skip Count']+"</td><td id='right'>"+song['Play Count']+"</td><td id='right'>"+(song['score']).toFixed(1)+"</td><td id='right'>"+song['Loved']+"</td></tr>";
+        return "<tr><td>"+i+"</td><td>"+song['Name']+"</td><td>"+song['Artist']+"</td><td id='right'>"+song['Year']+"</td><td id='right'>"+song['Skip Count']+"</td><td id='right'>"+song['Play Count']+"</td><td id='right'>"+song['Loved']+"</td></tr>";
     }
     
     function getData(p=1,s=1) {
@@ -61,7 +61,7 @@
             });
             
             $('table').addClass('sortable');
-            $('table').append("<thead><tr><th>Rank</th><th>Name</th><th>Artist</th><th>Year</th><th>Skips</th><th>Plays</th><th>Score</th><th>Loved?</th></tr></thead>");
+            $('table').append("<thead><tr><th>Rank</th><th>Name</th><th>Artist</th><th>Year</th><th>Skips</th><th>Plays</th><th>Loved?</th></tr></thead>");
             $('table').append('<tbody></tbody>');
             
 //            console.log(data[0]);
