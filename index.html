@@ -4,8 +4,8 @@
 	<title>iTunes</title>
 	<meta name="viewport" content="initial-scale=1.0">
 	<meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="./normalize.css">
-	<link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="static/normalize.css">
+	<link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 
 <body>
@@ -21,20 +21,18 @@
         </div>
     </div>
 <div id='view'>
-    <table>
-        
+    <table id="table">
     <tbody>
-        
     </tbody>
     </table>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="static/sorttable.js"></script>
 <script type="text/javascript">
-    
     $('#form').on('submit',function(){
        s = $("input[name='s']").val();
-        $('tbody').html('');
+        $('table').html('');
         getData(2-s,s);
         return false;
     });
@@ -62,7 +60,9 @@
                 return b['score'] - a['score'];
             });
             
-            $('tbody').append("<tr><th>Rank</th><th>Name</th><th>Artist</th><th>Year</th><th>Skips</th><th>Plays</th><th>Score</th><th>Loved?</th></tr>");
+            $('table').addClass('sortable');
+            $('table').append("<thead><tr><th>Rank</th><th>Name</th><th>Artist</th><th>Year</th><th>Skips</th><th>Plays</th><th>Score</th><th>Loved?</th></tr></thead>");
+            $('table').append('<tbody></tbody>');
             
 //            console.log(data[0]);
             var i = 1;
@@ -70,6 +70,10 @@
                 $('tbody').append(printSong(e,i));
                 i++;
             });
+            
+            sorttable.makeSortable(document.getElementById('table'));
+            var myTH = document.getElementsByTagName("th")[0];
+sorttable.innerSortFunction.apply(myTH, []);
         });
     }
 </script>

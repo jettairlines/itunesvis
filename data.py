@@ -113,7 +113,7 @@ fields = {'Track ID','Year','Date Added','Play Count','Skip Count','Name','Artis
 
 # =======================================================================
 
-tree = ET.parse('data/iTunes Music Library.xml', OrderedXMLTreeBuilder())
+tree = ET.parse('iTunes Music Library.xml', OrderedXMLTreeBuilder())
 # root = tree.getroot()
 datas = []
 
