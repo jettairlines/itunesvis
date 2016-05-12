@@ -25,17 +25,22 @@ Sorting your iTunes Play List based on how much you skip.
 **Rankings are calculated by** Play : Skips input over time since you've added this song to your library
 
 ## Background
+
 ### Do I have a good playlist?
+
 ### Motivation
 tl;dr: relationship between "Loved" marl & listening habits (plays + skips)
 I really really want to explorer my iTunes library data (yes I still use iTunes) to see how good am I at constructing my own music library. The way I listen to music is play everthing on shuffle and skip songs I'm not in the mood for. I am very commited to the "Loved" mark, and once I mark a song "Loved" I always look for it first and feel very bad skipping it. Thus, "Loved" and skip count are important to me.
+
 ### Audience
 Anyone who still uses iTunes for music & finding themselves skipping way to much of their supposedly "favourite" songs
 - Although iTunes makes play & skip count avalible, one never really thinks about the implications behind them. These numbers don't tell much by themselves
+
 ### Data
 - In every iTunes folder
 - Depends on personal playlist size. Personally I have ~680 songs.
 - The point is to use iTunes very very often for good play & skip stats
+
 ### Related Wrk
 - [iTunes Library Analyzer - Analyze iTunes Library to Charts]
     - Graphic method to represent given iTunes data
