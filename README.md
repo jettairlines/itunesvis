@@ -24,6 +24,9 @@ Sorting your iTunes Play List based on how much you skip.
 
 **Rankings are calculated by** Play : Skips input over time since you've added this song to your library
 
+#### Bugs
+- Data Analyzer doesn't know how to pick out non-music entrys (i.e apps & books)
+
 ## Background
 
 ### Do I have a good playlist?
