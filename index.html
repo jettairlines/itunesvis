@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iTunes</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./normalize.css">
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+
+<body>
+    <div class="top">
+        <div>
+            <h1>Do you really like your iTunes Library?</h1>
+            <p>How imprtant is Plays vs Skips to you?</p>
+            <form id='form'>
+            Plays<input type="range" name="s" min="0" max="2" step="0.5"> Skips
+                <br>
+                <input class="btn" type="submit" value="Rate my PL" />
+            </form>
+        </div>
+    </div>
+<div id='view'>
+    <table>
+        
+    <tbody>
+        
+    </tbody>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+    
+    $('#form').on('submit',function(){
+       s = $("input[name='s']").val();
+        $('tbody').html('');
+        getData(2-s,s);
+        return false;
+    });
+    
+    function getScore(song,p=1,s=1){
+        var age = Date.now() - (new Date(song['Date Added']));
+        return 1e8*(song['Play Count']*p - song['Skip Count']*s)/age;
+    }
+    function printSong(song,i){
+        song['Artist'] = (song['Artist'] == -1? '' : song['Artist']);
+        song['Year'] = (song['Year'] == -1? '' : song['Year']);
+        song['Skip Count'] = (song['Skip Count'] == -1? 0 : song['Skip Count']);
+        song['Play Count'] = (song['Play Count'] == -1? 0 : song['Play Count']);
+        song['Loved'] = (song['Loved'] == -1? '' : '&#10084;');
+        return "<tr><td>"+i+"</td><td>"+song['Name']+"</td><td>"+song['Artist']+"</td><td id='right'>"+song['Year']+"</td><td id='right'>"+song['Skip Count']+"</td><td id='right'>"+song['Play Count']+"</td><td id='right'>"+(song['score']).toFixed(1)+"</td><td id='right'>"+song['Loved']+"</td></tr>";
+    }
+    
+    function getData(p=1,s=1) {
+        $.getJSON( "data.json", function( data ) {
+            data.forEach(function(e){
+               e['score']=getScore(e,p,s);
+            });
+
+            data.sort(function(a, b) {
+                return b['score'] - a['score'];
+            });
+            
+            $('tbody').append("<tr><th>Rank</th><th>Name</th><th>Artist</th><th>Year</th><th>Skips</th><th>Plays</th><th>Score</th><th>Loved?</th></tr>");
+            
+//            console.log(data[0]);
+            var i = 1;
+            data.forEach(function(e){
+                $('tbody').append(printSong(e,i));
+                i++;
+            });
+        });
+    }
+</script>
+
+</body>
+</html>
